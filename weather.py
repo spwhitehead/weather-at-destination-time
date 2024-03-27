@@ -35,12 +35,16 @@ def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int)
         datetime.strptime(period["startTime"], "%Y-%m-%dT%H:%M:%S%z") - future_time))
 
     if closest_forecast:
-        # Display the relevant forecast information
-        print(f"Weather forecast at your given time:")
-        print(f"""
-            Temperature:    {closest_forecast['temperature']}°{closest_forecast['temperatureUnit']}
-            Wind:           {closest_forecast['windSpeed']} from {closest_forecast['windDirection']}
-            Forecast:       {closest_forecast['shortForecast']}
-            """)
+        # Construct the forecast information string
+        forecast_info = (
+            "Weather forecast at your given time:\n"
+            f"Temperature:    {closest_forecast['temperature']}°{
+                closest_forecast['temperatureUnit']}\n"
+            f"Wind:           {closest_forecast['windSpeed']} from the {
+                closest_forecast['windDirection']}\n"
+            f"Forecast:       {closest_forecast['shortForecast']}\n"
+        )
     else:
-        print("No suitable forecast found for the estimated arrival time.")
+        forecast_info = "No suitable forecast found for the estimated arrival time."
+
+    return forecast_info
