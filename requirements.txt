@@ -1,0 +1,7 @@
+uvicorn
+fastapi
+geopy
+requests
+datetime
+jinja2
+python-multipart
