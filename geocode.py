@@ -2,7 +2,7 @@ from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderUnavailable
 
 # Initialize Nominatim Geocoder with a specific user agent and a longer timeout
-geolocator = Nominatim(user_agent="wx_destination_app_v1",
+geolocator = Nominatim(user_agent="wx_at_destination_app",
                        timeout=5)  # Timeout set to 5 seconds
 
 
