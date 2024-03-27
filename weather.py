@@ -1,6 +1,12 @@
 import requests
 from datetime import datetime, timedelta
 
+# For Testing only!!!
+# latitude = 33.98720773169573
+# longitude = -118.27262854661085
+# hours = 4
+# End testing !!!
+
 
 def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int):
     # Get the estimated arrival time
