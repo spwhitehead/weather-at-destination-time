@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 # For Testing only!!!
 # latitude = 33.98720773169573
@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 
 def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int):
     # Get the estimated arrival time
-    arrival_time = datetime.now() + timedelta(hours=hours)
+    future_time = datetime.now(timezone.utc) + timedelta(hours=hours)
     # Weather API endpoint for the given coordinates
     url = f"https://api.weather.gov/points/{latitude},{longitude}"
     response = requests.get(url)
@@ -31,16 +31,8 @@ def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int)
     periods = forecast_data["properties"]["periods"]
 
     # Find the forecast closest to the given number of hours
-    closest_forecast = None
-    min_time_diff = float("inf")
-    for period in periods:
-        forecast_time = datetime.strptime(
-            period["startTime"], "%Y-%m-%dT%H:%M:%S%z")
-        # Gets the ABS of the given travel time
-        time_diff = abs((forecast_time - arrival_time).total_seconds())
-        if time_diff < min_time_diff:
-            closest_forecast = period
-            min_time_diff = time_diff
+    closest_forecast = min(periods, key=lambda period: abs(
+        datetime.strptime(period["startTime"], "%Y-%m-%dT%H:%M:%S%z") - future_time))
 
     if closest_forecast:
         # Display the relevant forecast information
