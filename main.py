@@ -6,7 +6,7 @@ import geocode
 import weather
 
 
-app = FastAPI
+app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 
