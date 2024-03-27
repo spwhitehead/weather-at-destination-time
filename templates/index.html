@@ -8,7 +8,8 @@
 <body>
     <h2>Enter a Day of the Week</h2>
     <form action="/weather-at-location-and-time/" method="post">
-        <input type="text" name="day" required>
+        <input type="text" name="address" placeholder="Enter address or city" required>
+        <input type="number" name="time" placeholder="Time in the future in hours (up to 160 hrs)" required>
         <button type="submit">Submit</button>
     </form>
     {% if message %}
