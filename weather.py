@@ -37,7 +37,6 @@ def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int)
     if closest_forecast:
         # Construct the forecast information string
         forecast_info = (
-            "Weather forecast at your given time:\n"
             f"Temperature:    {closest_forecast['temperature']}°{
                 closest_forecast['temperatureUnit']}\n"
             f"Wind:           {closest_forecast['windSpeed']} from the {

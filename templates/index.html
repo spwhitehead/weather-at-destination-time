@@ -6,14 +6,15 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h2>Enter a Day of the Week</h2>
+    <h2>Weather Forecast</h2>
+    <h3>Enter an address and the number of hours ahead (up to 160) you want the forecast for.</h3>
     <form action="/weather-at-location-and-time/" method="post">
-        <input type="text" name="address" placeholder="Enter address or city" required>
-        <input type="number" name="time" placeholder="Time in the future in hours (up to 160 hrs)" required>
+        <input type="text" name="address" placeholder="Address or City" required>
+        <input type="number" name="time" placeholder="Hours (up to 160)" required>
         <button type="submit">Submit</button>
     </form>
     {% if message %}
-        <p><strong>Message: </strong>{{ message }}</p>
+        <p><strong>Forecast in {{ time }} hours: </strong>{{ message | replace('/n', "<br>") | safe }}</p>
     {% endif %}
 </body>
 </html>
