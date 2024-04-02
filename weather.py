@@ -23,7 +23,7 @@ def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int)
     forecast_url = response.json()["properties"]["forecastHourly"]
     forecast_response = requests.get(forecast_url)
     if forecast_response.status_code != 200:
-        print("Failed to retried hourly forecast.")
+        print("Failed to retrieve hourly forecast.")
         return
 
     # Parse the forecast data
@@ -37,7 +37,6 @@ def fetch_and_display_wx_for_time(latitude: float, longitude: float, hours: int)
     if closest_forecast:
         # Construct the forecast information string
         forecast_info = (
-            "Weather forecast at your given time:\n"
             f"Temperature:    {closest_forecast['temperature']}°{
                 closest_forecast['temperatureUnit']}\n"
             f"Wind:           {closest_forecast['windSpeed']} from the {
