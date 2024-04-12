@@ -1,4 +1,5 @@
 *.env
+*.venv
 *.swp
 DS.Store
 __pycache__/
